@@ -34,5 +34,32 @@ export default class Summoners extends Component {
     this.setState(_getComponentState());
   }
 
-  render
+  render() {
+    let summoners = this.state.summoners.length ? this.state.summoners.map(summoner => {
+      return(
+        <tr>
+          <td>{summoner.name}</td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+      )
+
+    }) : []
+
+    return (
+      <div className="text-center row">
+        <h1>Toxic Summoners</h1>
+
+        <div className="col-xs-6 col-xs-offset-3">
+          <AddSummonerForm />
+        </div>
+
+        <div className="col-xs-12">
+          <SummonersDisplay summoners={this.state.summoners} />
+        </div>
+
+      </div>
+    )
+  }
 }
